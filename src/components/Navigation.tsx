@@ -45,11 +45,9 @@ function Navigation({ darkMode, setDarkMode }: NavigationProps) {
             <button
               onClick={() => setLanguage(language === 'en' ? 'lo' : 'en')}
               className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-white/5 dark:border dark:border-white/10 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors duration-200"
+              aria-label={language === 'en' ? 'Switch to Lao' : 'Switch to English'}
             >
               <span className="text-lg">{language === 'en' ? '🇱🇦' : '🇺🇸'}</span>
-              <span className="text-xs font-medium text-gray-700 dark:text-gray-200">
-                {language === 'en' ? 'ລາວ' : 'EN'}
-              </span>
             </button>
 
             <button
@@ -103,11 +101,9 @@ function Navigation({ darkMode, setDarkMode }: NavigationProps) {
               <button
                 onClick={() => setLanguage(language === 'en' ? 'lo' : 'en')}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-white/5 border border-transparent dark:border-white/10"
+                aria-label={language === 'en' ? 'Switch to Lao' : 'Switch to English'}
               >
                 <span className="text-lg">{language === 'en' ? '🇱🇦' : '🇺🇸'}</span>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-                  {language === 'en' ? 'ລາວ' : 'EN'}
-                </span>
               </button>
 
               <button
