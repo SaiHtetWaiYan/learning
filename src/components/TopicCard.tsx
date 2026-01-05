@@ -19,13 +19,12 @@ function TopicCard({ topic, isCompleted, onToggleComplete }: TopicCardProps) {
 
   return (
     <div
-      className={`rounded-xl border overflow-hidden shadow-sm transition-all duration-200 hover:shadow-md ${
-        isCompleted
-          ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 opacity-80'
-          : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700'
-      }`}
+      className={`rounded-xl border overflow-hidden shadow-sm transition-all duration-200 hover:shadow-md ${isCompleted
+        ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-500/30 opacity-80'
+        : 'bg-white dark:bg-white/[0.02] border-gray-200 dark:border-white/10 dark:backdrop-blur-sm'
+        }`}
     >
-      <div className="flex items-start gap-4 p-5 bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-800">
+      <div className="flex items-start gap-4 p-5 bg-linear-to-r from-gray-50 to-white dark:from-white/[0.02] dark:to-white/[0.02]">
         <div
           className="flex items-center pt-1 cursor-pointer"
           onClick={handleCheckboxChange}
@@ -33,55 +32,51 @@ function TopicCard({ topic, isCompleted, onToggleComplete }: TopicCardProps) {
           <input
             type="checkbox"
             checked={isCompleted}
-            onChange={() => {}}
+            onChange={() => { }}
             className="w-5 h-5 cursor-pointer accent-indigo-500 rounded"
           />
         </div>
         <div className="flex-1 cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
           <h3
-            className={`text-lg font-semibold mb-1 transition-colors ${
-              isCompleted
-                ? 'text-gray-400 dark:text-gray-500 line-through'
-                : 'text-gray-800 dark:text-white'
-            }`}
+            className={`text-lg font-semibold tracking-tight mb-1 transition-colors ${isCompleted
+              ? 'text-gray-400 dark:text-gray-500 line-through'
+              : 'text-gray-800 dark:text-white'
+              }`}
           >
             {topic.title}
           </h3>
           <p
-            className={`text-sm mb-3 ${
-              isCompleted ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
-            }`}
+            className={`text-sm font-light mb-3 ${isCompleted ? 'text-gray-400 dark:text-gray-500' : 'text-gray-600 dark:text-gray-400'
+              }`}
           >
             {topic.description}
           </p>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg transition-colors">
+          <button className="px-4 py-2 text-sm font-medium tracking-wide text-white bg-indigo-500 hover:bg-indigo-600 rounded-lg transition-colors">
             {isExpanded ? t('hideDetails') : t('showDetails')}
           </button>
         </div>
       </div>
 
       {isExpanded && (
-        <div className="p-5 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700">
+        <div className="p-5 bg-gray-50 dark:bg-[#0A0A0F] border-t border-gray-100 dark:border-white/10">
           {topic.subtopics.map((subtopic, index) => (
             <div
               key={index}
-              className={`pb-5 mb-5 ${
-                index !== topic.subtopics.length - 1 ? 'border-b border-gray-200 dark:border-gray-700' : ''
-              }`}
+              className={`pb-5 mb-5 ${index !== topic.subtopics.length - 1 ? 'border-b border-gray-200 dark:border-white/10' : ''}`}
             >
-              <h4 className="text-base font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              <h4 className="text-base font-semibold tracking-tight text-gray-700 dark:text-gray-200 mb-2">
                 {subtopic.name}
               </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm font-light text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                 {subtopic.description}
               </p>
 
               {subtopic.example && (
                 <div className="bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500 p-4 rounded-r-lg mt-3">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400 font-mono">
                     {t('example')}
                   </span>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
                     {subtopic.example}
                   </p>
                 </div>
@@ -91,11 +86,11 @@ function TopicCard({ topic, isCompleted, onToggleComplete }: TopicCardProps) {
                 subtopic.codeExamples.map((codeEx, codeIndex) => (
                   <div key={codeIndex} className="mt-3">
                     {codeEx.label && (
-                      <span className="block text-xs text-gray-500 dark:text-gray-400 italic mb-1">
+                      <span className="block text-xs text-gray-500 dark:text-gray-400 italic mb-1 font-mono">
                         {codeEx.label}
                       </span>
                     )}
-                    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono">
+                    <pre className="bg-[#1e1e1e] text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">
                       <code>{codeEx.code}</code>
                     </pre>
                   </div>
@@ -103,8 +98,9 @@ function TopicCard({ topic, isCompleted, onToggleComplete }: TopicCardProps) {
             </div>
           ))}
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

@@ -1,8 +1,95 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --dark-bg: #0A0A0F;
+  --dark-surface: rgba(255, 255, 255, 0.02);
+  --dark-border: rgba(255, 255, 255, 0.1);
+  --accent-cyan: #00D4FF;
+  --accent-orange: #FF6B35;
+  --accent-purple: #7B2FF7;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Dark Mode Animated Grid Background */
+.dark body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+/* Floating Gradient Orbs */
+.dark body::after {
+  content: '';
+  position: fixed;
+  top: -8rem;
+  left: -8rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+  filter: blur(48px);
+  opacity: 0.25;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Second Floating Orb via box-shadow trick */
+.dark .dark-orb-bottom {
+  position: fixed;
+  bottom: -8rem;
+  right: -8rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+  filter: blur(48px);
+  opacity: 0.25;
+  animation: float 10s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keyframe Animations */
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
