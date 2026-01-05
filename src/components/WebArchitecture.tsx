@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLanguage } from '../i18n/LanguageContext';
 
 interface Particle {
   id: number;
@@ -57,7 +56,6 @@ const externalServices = [
 ];
 
 function WebArchitecture() {
-  const { t } = useLanguage();
   const [particles, setParticles] = useState<Particle[]>([]);
   const [hoveredLayer, setHoveredLayer] = useState<number | null>(null);
 
@@ -119,13 +117,13 @@ function WebArchitecture() {
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-['JetBrains_Mono',monospace]">
-            {t('systemArchitecture') || 'System Architecture'}
+            System Architecture
           </span>
           <h1 className="text-3xl md:text-5xl font-bold mt-2 bg-gradient-to-b from-gray-800 to-gray-500 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
-            {t('webApplication') || 'Web Application'}
+            Web Application
           </h1>
           <p className="text-xl text-gray-500 dark:text-gray-400 mt-2 font-light">
-            {t('threeLayerArch') || 'Three-Tier Architecture'}
+            Three-Tier Architecture
           </p>
         </div>
 
@@ -371,17 +369,17 @@ function WebArchitecture() {
         <div className="mt-12 flex justify-center gap-8">
           <div className="flex items-center gap-2">
             <span className="text-[#00D4FF]">↓</span>
-            <span className="text-gray-600 dark:text-gray-400 text-sm">{t('requestFlow') || 'Request Flow'}</span>
+            <span className="text-gray-600 dark:text-gray-400 text-sm">Request Flow</span>
             <span className="text-gray-500 text-xs">Client to Server</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#7B2FF7]">↑</span>
-            <span className="text-gray-600 dark:text-gray-400 text-sm">{t('responseFlow') || 'Response Flow'}</span>
+            <span className="text-gray-600 dark:text-gray-400 text-sm">Response Flow</span>
             <span className="text-gray-500 text-xs">Server to Client</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#FF6B35]">⇅</span>
-            <span className="text-gray-600 dark:text-gray-400 text-sm">{t('bidirectional') || 'Bidirectional'}</span>
+            <span className="text-gray-600 dark:text-gray-400 text-sm">Bidirectional</span>
             <span className="text-gray-500 text-xs">Real-time Sync</span>
           </div>
         </div>
@@ -389,7 +387,7 @@ function WebArchitecture() {
         {/* External Services */}
         <div className="mt-12 p-6 rounded-2xl border border-dashed border-gray-300 dark:border-white/20 relative">
           <span className="absolute -top-3 left-6 px-3 bg-gray-50 dark:bg-[#0A0A0F] text-gray-500 text-xs font-['JetBrains_Mono',monospace]">
-            {t('externalServices') || 'External Services'}
+            External Services
           </span>
           <div className="flex flex-wrap justify-center gap-4">
             {externalServices.map((service) => (

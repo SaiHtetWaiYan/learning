@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import TopicsPage from './pages/TopicsPage';
 import WebArchitecture from './components/WebArchitecture';
+import ProjectServerDomain from './components/ProjectServerDomain';
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<TopicsPage />} />
             <Route path="/architecture" element={<WebArchitecture />} />
+            <Route path="/deployment" element={<ProjectServerDomain />} />
           </Routes>
         </div>
       </div>

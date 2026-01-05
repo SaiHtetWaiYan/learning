@@ -25,17 +25,20 @@ function Navigation({ darkMode, setDarkMode }: NavigationProps) {
           <div className="flex items-center gap-2">
             <span className="text-2xl">📚</span>
             <span className="font-semibold tracking-tight text-gray-800 dark:text-white">
-              {t('appName') || 'SE Fundamentals'}
+              SE Fundamentals
             </span>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-2">
             <NavLink to="/" className={navLinkClass}>
-              {t('topics') || 'Topics'}
+              Topics
             </NavLink>
             <NavLink to="/architecture" className={navLinkClass}>
-              {t('architecture') || 'Architecture'}
+              Architecture
+            </NavLink>
+            <NavLink to="/deployment" className={navLinkClass}>
+              Deployment
             </NavLink>
           </div>
 
@@ -90,10 +93,13 @@ function Navigation({ darkMode, setDarkMode }: NavigationProps) {
           <div className="md:hidden mt-4 pb-4 border-t border-gray-100 dark:border-white/10 pt-4 space-y-4 animate-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-2">
               <NavLink to="/" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>
-                {t('topics') || 'Topics'}
+                Topics
               </NavLink>
               <NavLink to="/architecture" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>
-                {t('architecture') || 'Architecture'}
+                Architecture
+              </NavLink>
+              <NavLink to="/deployment" className={navLinkClass} onClick={() => setIsMenuOpen(false)}>
+                Deployment
               </NavLink>
             </div>
 
