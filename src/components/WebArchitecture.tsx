@@ -121,7 +121,7 @@ function WebArchitecture() {
           <span className="text-xs uppercase tracking-[0.3em] text-gray-500 font-['JetBrains_Mono',monospace]">
             {t('systemArchitecture') || 'System Architecture'}
           </span>
-          <h1 className="text-5xl font-bold mt-2 bg-gradient-to-b from-gray-800 to-gray-500 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-5xl font-bold mt-2 bg-gradient-to-b from-gray-800 to-gray-500 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
             {t('webApplication') || 'Web Application'}
           </h1>
           <p className="text-xl text-gray-500 dark:text-gray-400 mt-2 font-light">
@@ -135,7 +135,7 @@ function WebArchitecture() {
             <div key={layer.title}>
               {/* Layer Card */}
               <div
-                className={`relative p-6 rounded-2xl border transition-all duration-300 cursor-pointer bg-white/80 dark:bg-white/[0.02] backdrop-blur-lg ${hoveredLayer !== index ? 'border-gray-200 dark:border-white/10' : ''
+                className={`relative p-4 md:p-6 rounded-2xl border transition-all duration-300 cursor-pointer bg-white/80 dark:bg-white/[0.02] backdrop-blur-lg ${hoveredLayer !== index ? 'border-gray-200 dark:border-white/10' : ''
                   }`}
                 style={{
                   borderColor:
@@ -160,7 +160,7 @@ function WebArchitecture() {
                   />
                 )}
 
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6">
                   {/* Icon Badge */}
                   <div
                     className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl transition-transform duration-300"
@@ -181,8 +181,8 @@ function WebArchitecture() {
                     </span>
                   </div>
 
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-2">
+                  <div className="flex-1 w-full text-center md:text-left">
+                    <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-2 justify-center md:justify-start">
                       <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">{layer.title}</h2>
                       {/* Layer Badge */}
                       <span
@@ -234,9 +234,9 @@ function WebArchitecture() {
 
               {/* Connection Section */}
               {index < layers.length - 1 && (
-                <div className="relative h-24 flex items-center justify-center">
-                  {/* SVG Connection Lines */}
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 100">
+                <div className="relative h-16 md:h-24 flex items-center justify-center">
+                  {/* SVG Connection Lines - Hide on Mobile */}
+                  <svg className="hidden md:block absolute inset-0 w-full h-full" viewBox="0 0 800 100">
                     <defs>
                       <linearGradient
                         id={`gradient-${index}`}
@@ -323,16 +323,30 @@ function WebArchitecture() {
 
                   {/* Direction Labels */}
                   <div
-                    className="absolute left-20 top-2 text-xs font-['JetBrains_Mono',monospace]"
+                    className="hidden md:block absolute left-20 top-2 text-xs font-['JetBrains_Mono',monospace]"
                     style={{ color: layers[index].color }}
                   >
                     Request ↓
                   </div>
                   <div
-                    className="absolute right-20 bottom-2 text-xs font-['JetBrains_Mono',monospace]"
+                    className="hidden md:block absolute right-20 bottom-2 text-xs font-['JetBrains_Mono',monospace]"
                     style={{ color: layers[index + 1].color }}
                   >
                     Response ↑
+                  </div>
+
+                  {/* Mobile Simple Connector */}
+                  <div
+                    className="md:hidden absolute inset-0 flex justify-center"
+                    style={{ opacity: 0.3 }}
+                  >
+                    <div
+                      className="w-px h-full border-l-2 border-dashed"
+                      style={{
+                        borderColor: `url(#gradient-${index})`,
+                        borderImage: `linear-gradient(to bottom, ${layers[index].color}, ${layers[index + 1].color}) 1`
+                      }}
+                    />
                   </div>
 
                   {/* Center Label */}
